@@ -23,7 +23,7 @@ class loginHelper
 
 	}
 
-	public function checkUser($user)
+	public static function checkUser($user)
 	{
 		$query=$this->db->prepare("select uname from user where uname=?");
 		$query->execute(array($user));
