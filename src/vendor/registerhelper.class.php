@@ -22,7 +22,7 @@ class registerHelper
 		
 		//Uname,email unique
 
-		$query=$this->db->prepare("inser into user(uname,pwd,name,email) values(?,?,?,?)");
+		$query=$this->db->prepare("insert into user(uname,pwd,name,email) values(?,?,?,?)");
 		$query->execute(array($user,$pass,$name,$email));
 
 		return true;
