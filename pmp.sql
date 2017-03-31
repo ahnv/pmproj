@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 29, 2017 at 04:40 PM
+-- Generation Time: Mar 31, 2017 at 04:28 PM
 -- Server version: 5.7.17-log
 -- PHP Version: 5.6.25
 
@@ -23,17 +23,45 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `category`
+--
+
+CREATE TABLE `category` (
+  `uid` int(11) NOT NULL,
+  `cid` int(11) NOT NULL,
+  `cname` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`uid`, `cid`, `cname`) VALUES
+(1, 1, 'Social');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `portal`
 --
 
 CREATE TABLE `portal` (
+  `sid` int(11) NOT NULL,
   `uid` int(20) NOT NULL,
+  `cid` int(11) NOT NULL,
   `service` text NOT NULL,
   `domain` varchar(50) DEFAULT NULL,
-  `sid` varchar(20) NOT NULL,
+  `susername` varchar(20) NOT NULL,
   `spass` varchar(20) NOT NULL,
   `note` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Table to store passwords';
+
+--
+-- Dumping data for table `portal`
+--
+
+INSERT INTO `portal` (`sid`, `uid`, `cid`, `service`, `domain`, `susername`, `spass`, `note`) VALUES
+(1, 1, 1, 'facebook.com', 'facebook.com', 'username', 'password', 'none');
 
 -- --------------------------------------------------------
 
@@ -54,15 +82,24 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`uid`, `uname`, `pwd`, `name`, `email`) VALUES
-(1, 'trashdove', 'lol', 'Trash Dove', 'trashdove@69.com'),
-(2, 'ahnv', 'ahnv', 'DIMU', 'dims@ahnv.com'),
-(3, 'pranav', 'bathla', 'pranav', 'bathla'),
-(4, 'lol', 'lol', 'lol', 'lol'),
-(5, '', '', '', '');
+(1, 'lol', 'lol', 'lol', 'lol');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`uid`,`cid`),
+  ADD UNIQUE KEY `uid` (`uid`,`cid`);
+
+--
+-- Indexes for table `portal`
+--
+ALTER TABLE `portal`
+  ADD PRIMARY KEY (`sid`);
 
 --
 -- Indexes for table `user`
@@ -76,10 +113,15 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `portal`
+--
+ALTER TABLE `portal`
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT COMMENT 'primary key', AUTO_INCREMENT=6;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT COMMENT 'primary key', AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

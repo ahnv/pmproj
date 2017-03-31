@@ -5,6 +5,9 @@ if (!$_SESSION['logged_in']){
 	header("Location: index.php");
 }
 require __DIR__.'/header.php';	
+
+$portalhelper=new portalhelper($db);
+print_r($portalhelper->fetch($_SESSION['uid']));
 ?>
 
 

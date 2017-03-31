@@ -11,9 +11,14 @@
 
 		public function fetch($user)
 		{
-			$query=$this->db->prepare("select service,domain,sid,pass from portal where uid=?");
+			$query=$this->db->prepare("select service,domain,sid,spass,note from portal where uid=?");
 			$query->execute(array($user));
+			$row=$query->fetchAll(PDO::FETCH_ASSOC);
+			return $row;
+
 		}
+
+		
 	}
 
 ?>

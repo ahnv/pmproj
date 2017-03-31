@@ -1,6 +1,9 @@
 <?php
 session_start();
 require __DIR__.'/src/autoload.php';
+	if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']){
+		header("Location: dashboard.php");
+	}
 	if(isset($_POST['username']) && isset($_POST['password'])){
 		$loginhelper=new loginHelper($db);
 		if ($loginhelper->login($_POST['username'], $_POST['password'])){

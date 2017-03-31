@@ -1,0 +1,60 @@
+public function checkPassword($pwd, &$errors) {
+    $errors_init = $errors;
+
+    if (strlen($pwd) < 8) {
+        $errors[] = "Password too short!";
+    }
+
+    if (!preg_match("#[0-9]+#", $pwd)) {
+        $errors[] = "Password must include at least one number!";
+    }
+
+    if (!preg_match("#[a-zA-Z]+#", $pwd)) {
+        $errors[] = "Password must include at least one letter!";
+    }     
+
+    return ($errors == $errors_init);
+}
+
+//password algorithm 2
+$pwd = $_POST['pwd'];
+
+if( strlen($pwd) &lt; 8 ) {
+$error .= "Password too short! 
+";
+}
+
+if( strlen($pwd) &gt; 20 ) {
+$error .= "Password too long! 
+";
+}
+
+if( strlen($pwd) &lt; 8 ) {
+$error .= "Password too short! 
+";
+}
+
+if( !preg_match("#[0-9]+#", $pwd) ) {
+$error .= "Password must include at least one number! 
+";
+}
+
+if( !preg_match("#[a-z]+#", $pwd) ) {
+$error .= "Password must include at least one letter! 
+";
+}
+
+if( !preg_match("#[A-Z]+#", $pwd) ) {
+$error .= "Password must include at least one CAPS! 
+";
+}
+
+if( !preg_match("#\W+#", $pwd) ) {
+$error .= "Password must include at least one symbol! 
+";
+}
+if($error){
+echo "Password validation failure(your choise is weak): $error";
+} else {
+echo "Your password is strong.";
+}
