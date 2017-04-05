@@ -10,6 +10,7 @@ require __DIR__.'/src/autoload.php';
 			header("Location: dashboard.php");
 		}else{
 			$error =  "Login Failed";
+			print_r($error);
 		}
 	}
 require __DIR__.'/header.php';	
